@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { auth, googleProvider } from '@/lib/firebase';
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
-import Button from '../ui/Button';
+import { loginWithEmail, registerWithEmail, loginWithGoogle } from '@/lib/auth';
+import Button from '@/components/ui/Button';
 import { LogIn, Mail } from 'lucide-react';
 
 interface AuthFormData {
@@ -17,9 +16,9 @@ export default function AuthForm() {
   const onSubmit = async (data: AuthFormData) => {
     try {
       if (isLogin) {
-        await signInWithEmailAndPassword(auth, data.email, data.password);
+        await loginWithEmail(data.email, data.password);
       } else {
-        await createUserWithEmailAndPassword(auth, data.email, data.password);
+        await registerWithEmail(data.email, data.password);
       }
     } catch (error) {
       console.error('Authentication error:', error);
@@ -28,7 +27,7 @@ export default function AuthForm() {
 
   const handleGoogleSignIn = async () => {
     try {
-      await signInWithPopup(auth, googleProvider);
+      await loginWithGoogle();
     } catch (error) {
       console.error('Google sign-in error:', error);
     }
@@ -46,6 +45,7 @@ export default function AuthForm() {
           <input
             {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
             type="email"
+            placeholder="Enter your email"
             className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
           />
           {errors.email && (
@@ -58,6 +58,7 @@ export default function AuthForm() {
           <input
             {...register('password', { required: true, minLength: 6 })}
             type="password"
+            placeholder="Enter your password"
             className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
           />
           {errors.password && (

@@ -1,12 +1,17 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import AuthForm from './components/auth/AuthForm';
-import { useAuthStore } from './store/authStore';
+import AuthForm from '@/components/auth/AuthForm';
+import DashboardLayout from '@/components/layout/DashboardLayout';
+import DashboardPage from '@/pages/dashboard/DashboardPage';
+import TransactionsPage from '@/pages/transactions/TransactionsPage';
+import SettingsPage from '@/pages/settings/SettingsPage';
+import ProfilePage from '@/pages/profile/ProfilePage';
+import { useAuth } from '@/hooks/useAuth';
 
 const queryClient = new QueryClient();
 
-function App() {
-  const { user, loading } = useAuthStore();
+export default function App() {
+  const { user, loading } = useAuth();
 
   if (loading) {
     return (
@@ -25,15 +30,17 @@ function App() {
               <AuthForm />
             </div>
           ) : (
-            <Routes>
-              <Route path="/" element={<div>Dashboard (Coming soon)</div>} />
-              {/* Add more routes here */}
-            </Routes>
+            <DashboardLayout>
+              <Routes>
+                <Route path="/" element={<DashboardPage />} />
+                <Route path="/transactions" element={<TransactionsPage />} />
+                <Route path="/settings" element={<SettingsPage />} />
+                <Route path="/profile" element={<ProfilePage />} />
+              </Routes>
+            </DashboardLayout>
           )}
         </div>
       </Router>
     </QueryClientProvider>
   );
 }
-
-export default App;
