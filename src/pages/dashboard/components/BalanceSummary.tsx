@@ -16,7 +16,7 @@ export default function BalanceSummary() {
                 </dt>
                 <dd className="flex items-baseline">
                   <div className="text-2xl font-semibold text-gray-900">
-                    $23,500.00
+                    $0.00
                   </div>
                 </dd>
               </dl>
@@ -38,7 +38,7 @@ export default function BalanceSummary() {
                 </dt>
                 <dd className="flex items-baseline">
                   <div className="text-2xl font-semibold text-gray-900">
-                    $4,200.00
+                    $0.00
                   </div>
                 </dd>
               </dl>
@@ -60,7 +60,7 @@ export default function BalanceSummary() {
                 </dt>
                 <dd className="flex items-baseline">
                   <div className="text-2xl font-semibold text-gray-900">
-                    $3,100.00
+                    $0.00
                   </div>
                 </dd>
               </dl>

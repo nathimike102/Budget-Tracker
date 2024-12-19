@@ -1,12 +1,18 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 const data = [
-  { name: 'Jan', amount: 2400 },
-  { name: 'Feb', amount: 1398 },
-  { name: 'Mar', amount: 9800 },
-  { name: 'Apr', amount: 3908 },
-  { name: 'May', amount: 4800 },
-  { name: 'Jun', amount: 3800 },
+  { name: 'Jan', amount: 0 },
+  { name: 'Feb', amount: 0 },
+  { name: 'Mar', amount: 0 },
+  { name: 'Apr', amount: 0 },
+  { name: 'May', amount: 0 },
+  { name: 'Jun', amount: 0 },
+  { name: 'Jul', amount: 0 },
+  { name: 'Aug', amount: 0 },
+  { name: 'Sep', amount: 0 },
+  { name: 'Oct', amount: 0 },
+  { name: 'Nov', amount: 0 },
+  { name: 'Dec', amount: 0 },
 ];
 
 export default function SpendingChart() {
